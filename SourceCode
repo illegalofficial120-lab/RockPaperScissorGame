@@ -1,0 +1,97 @@
+import tkinter as tk
+from tkinter import messagebox
+import random
+
+# WINDOW CREATION
+Win = tk.Tk()
+Win.resizable(False, False)
+
+width = 400
+height = 200
+screen_width = Win.winfo_screenwidth()
+screen_height = Win.winfo_screenheight()
+x = (screen_width // 2) - (width // 2)
+y = (screen_height // 2) - (height // 2)
+Win.geometry(f"{width}x{height}+{x}+{y}")
+
+Win.title("Game Arena")
+Win.iconbitmap(r"E:\ItzVihang\Workspace - Visual Studio Codes\RockPaperScissor\AppIcon.ico")
+
+# LABELS & VARIABLES
+Option = ["Rock", "Paper", "Scissor"]
+UserChoice = ("")
+AiChoice = ("")
+ResultLabel = tk.Label(Win, text="", font=("Bold", 20))
+ChoiceAiLabel = tk.Label(Win, text="", font=("Bold", 20))
+ChoiceUserLabel = tk.Label(Win, text="", font=("Bold", 20))
+
+# GAME CORE LOGIC
+def StartFNC():
+    messagebox.showinfo("How To Play ?","In Order To Play , Click Any Options From Below Window . Ai Will Choose One Option From Rock , Paper & Scissor And You Have To Guess It")
+    messagebox.showinfo("Copyright","""© 2026 Vihang. All Rights Reserved.
+Unauthorized copying, modification, or distribution of this game is strictly prohibited""")
+    StartBTN.pack_forget()
+    AiChoice == random.choice(Option)
+    RockBTN.pack()
+    PaperBTN.pack()
+    ScissorBTN.pack()
+    ResultLabel.pack()
+    ChoiceUserLabel.pack()
+    ChoiceAiLabel.pack()
+
+def RockFNC():
+    print("LOG | USER SELECTED 🪨")
+    UserChoice = ("Rock")
+    AiChoice = random.choice(Option)
+    print("LOG | RANDOM LOGIC SELECTED ",AiChoice)
+    if UserChoice == AiChoice:
+        ResultLabel.config(text="DRAW")
+    elif AiChoice == "Paper":
+        ResultLabel.config(text="YOU LOSE")
+    elif AiChoice == "Scissor":
+        ResultLabel.config(text="YOU WIN")
+    ChoiceAiLabel.config(text=("🤖: ",AiChoice))
+    ChoiceUserLabel.config(text=("👤: ",UserChoice))
+    
+def PaperFNC():
+    print("LOG | USER SELECTED 📄")
+    UserChoice = ("Paper")
+    AiChoice = random.choice(Option)
+    print("LOG | RANDOM LOGIC SELECTED ",AiChoice)
+    if UserChoice == AiChoice:
+        ResultLabel.config(text="DRAW")
+    elif AiChoice == "Scissor":
+        ResultLabel.config(text="YOU LOSE")
+    elif AiChoice == "Rock":
+        ResultLabel.config(text="YOU WIN")
+    ChoiceAiLabel.config(text=("🤖: ",AiChoice))
+    ChoiceUserLabel.config(text=("👤: ",UserChoice))
+    
+def ScissorFNC():
+    print("LOG | USER SELECTED ✂️")
+    UserChoice = ("Scissor")
+    AiChoice = random.choice(Option)
+    print("LOG | RANDOM LOGIC SELECTED ",AiChoice)
+    if UserChoice == AiChoice:
+        ResultLabel.config(text="DRAW")
+    elif AiChoice == "Rock":
+        ResultLabel.config(text="YOU LOSE")
+    elif AiChoice == "Paper":
+        ResultLabel.config(text="YOU WIN")
+    ChoiceAiLabel.config(text=("🤖: ",AiChoice))
+    ChoiceUserLabel.config(text=("👤: ",UserChoice))
+    
+# UI ELEMENTS
+RockBTN = tk.Button(Win, text="ROCK", command=RockFNC)
+PaperBTN = tk.Button(Win, text="PAPER", command=PaperFNC)
+ScissorBTN = tk.Button(Win, text="SCISSOR", command=ScissorFNC)
+
+StartBTN = tk.Button(Win,text="START",font=("Arial", 20, "bold"),width=15,height=2,command=StartFNC)
+StartBTN.pack(expand=True)
+
+# MAIN LOOP
+Win.mainloop()
+
+
+
+
